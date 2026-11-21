@@ -1,0 +1,32 @@
+--- normal use ---
+filter_readings(data, 20.0, 40.0) -> [25.0, 35.5]
+count_outliers(data, 20.0, 40.0) -> 2
+moving_average([10, 20, 30, 40], 2) -> [15.0, 25.0, 35.0]
+maximum_difference([10, 25, 40, 15]) -> 30.0
+sensor_summary([10, 20, 30, 40]) -> {'samples': 4, 'minimum': 10.0, 'maximum': 40.0, 'average': 25.0, 'above_average': 2}
+
+--- tuples and ints ---
+filter_readings(tuple) -> [25.0, 35.5]
+sensor_summary(ints) -> {'samples': 5, 'minimum': 1.0, 'maximum': 5.0, 'average': 3.0, 'above_average': 2}
+filter_readings(nothing in range) -> []
+moving_average(window = length) -> [2.0]
+sensor_summary(one reading) -> {'samples': 1, 'minimum': 7.5, 'maximum': 7.5, 'average': 7.5, 'above_average': 0}
+
+--- empty input ---
+filter_readings([]) -> ValueError: empty dataset
+count_outliers([]) -> ValueError: empty dataset
+moving_average([], 1) -> ValueError: empty dataset
+maximum_difference([]) -> ValueError: empty dataset
+sensor_summary(()) -> ValueError: empty dataset
+
+--- invalid input ---
+sensor_summary('abc') -> TypeError: expected a list or tuple
+maximum_difference(42) -> TypeError: expected a list or tuple
+sensor_summary({1.0, 2.0}) -> TypeError: expected a list or tuple
+maximum_difference([1.0, 'x']) -> TypeError: must be real number, not str
+filter_readings(data, 40.0, 20.0) -> ValueError: minimum must not be greater than maximum
+count_outliers(data, 'a', 40.0) -> TypeError: must be real number, not str
+moving_average(data, 0) -> ValueError: window must be between 1 and the number of readings
+moving_average(data, -2) -> ValueError: window must be between 1 and the number of readings
+moving_average(data, 10) -> ValueError: window must be between 1 and the number of readings
+moving_average(data, 2.5) -> TypeError: 'float' object cannot be interpreted as an integer
