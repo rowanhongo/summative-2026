@@ -1,0 +1,7 @@
+readings: 1000000
+function                 python          C  speedup
+filter_readings         0.2782s    0.1772s     1.6x
+count_outliers          0.2369s    0.0478s     5.0x
+moving_average          1.0100s    0.2745s     3.7x
+maximum_difference      0.1757s    0.0339s     5.2x
+sensor_summary          0.3778s    0.0479s     7.9x
