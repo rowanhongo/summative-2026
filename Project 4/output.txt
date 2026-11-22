@@ -1,0 +1,66 @@
+[ 0s] [Staff] Queue empty, waiting
+[ 1s] [Student] Submitted reservation 1 for book 4 (queue size 1)
+[ 1s] [Staff] Processing reservation 1 for book 4
+[ 2s] [Student] Submitted reservation 2 for book 7 (queue size 1)
+[ 3s] [Student] Submitted reservation 3 for book 18 (queue size 2)
+[ 4s] [Monitor] submitted 3, processed 0, approved 0, rejected 0, queue size 2
+[ 4s] [Staff] Reservation 1 approved
+[ 4s] [Staff] Processing reservation 2 for book 7
+[ 4s] [Student] Submitted reservation 4 for book 16 (queue size 2)
+[ 5s] [Student] Submitted reservation 5 for book 14 (queue size 3)
+[ 6s] [Student] Submitted reservation 6 for book 16 (queue size 4)
+[ 7s] [Staff] Reservation 2 rejected, book 7 is not available
+[ 7s] [Staff] Processing reservation 3 for book 18
+[ 7s] [Student] Submitted reservation 7 for book 7 (queue size 4)
+[ 8s] [Monitor] submitted 7, processed 2, approved 1, rejected 1, queue size 4
+[ 8s] [Student] Submitted reservation 8 for book 13 (queue size 5)
+[ 9s] [Student] Queue full, reservation 9 is waiting
+[10s] [Staff] Reservation 3 approved
+[10s] [Staff] Processing reservation 4 for book 16
+[10s] [Student] Submitted reservation 9 for book 10 (queue size 5)
+[11s] [Student] Queue full, reservation 10 is waiting
+[12s] [Monitor] submitted 9, processed 3, approved 2, rejected 1, queue size 5
+[13s] [Staff] Reservation 4 approved
+[13s] [Staff] Processing reservation 5 for book 14
+[13s] [Student] Submitted reservation 10 for book 2 (queue size 5)
+[14s] [Student] Queue full, reservation 11 is waiting
+[16s] [Monitor] submitted 10, processed 4, approved 3, rejected 1, queue size 5
+[16s] [Staff] Reservation 5 approved
+[16s] [Staff] Processing reservation 6 for book 16
+[16s] [Student] Submitted reservation 11 for book 3 (queue size 5)
+[17s] [Student] Queue full, reservation 12 is waiting
+[22s] [Staff] Reservation 6 approved
+[22s] [Staff] Processing reservation 7 for book 7
+[22s] [Student] Submitted reservation 12 for book 8 (queue size 5)
+[23s] [Monitor] submitted 12, processed 6, approved 5, rejected 1, queue size 5
+[23s] [Student] Queue full, reservation 13 is waiting
+[25s] [Staff] Reservation 7 rejected, book 7 is not available
+[25s] [Staff] Processing reservation 8 for book 13
+[25s] [Student] Submitted reservation 13 for book 11 (queue size 5)
+[26s] [Student] Queue full, reservation 14 is waiting
+[27s] [Monitor] submitted 13, processed 7, approved 5, rejected 2, queue size 5
+[28s] [Staff] Reservation 8 rejected, book 13 is not available
+[29s] [Staff] Processing reservation 9 for book 10
+[29s] [Student] Submitted reservation 14 for book 20 (queue size 5)
+[30s] [Student] Queue full, reservation 15 is waiting
+[31s] [Monitor] submitted 14, processed 8, approved 5, rejected 3, queue size 5
+[32s] [Staff] Reservation 9 approved
+[32s] [Staff] Processing reservation 10 for book 2
+[32s] [Student] Submitted reservation 15 for book 4 (queue size 5)
+[35s] [Staff] Reservation 10 approved
+[35s] [Staff] Processing reservation 11 for book 3
+[36s] [Monitor] submitted 15, processed 10, approved 7, rejected 3, queue size 4
+[38s] [Staff] Reservation 11 rejected, book 3 is not available
+[38s] [Staff] Processing reservation 12 for book 8
+[40s] [Monitor] submitted 15, processed 11, approved 7, rejected 4, queue size 3
+[41s] [Staff] Reservation 12 approved
+[42s] [Staff] Processing reservation 13 for book 11
+[44s] [Monitor] submitted 15, processed 12, approved 8, rejected 4, queue size 2
+[45s] [Staff] Reservation 13 rejected, book 11 is not available
+[45s] [Staff] Processing reservation 14 for book 20
+[48s] [Staff] Reservation 14 approved
+[48s] [Staff] Processing reservation 15 for book 4
+[48s] [Monitor] submitted 15, processed 14, approved 9, rejected 5, queue size 0
+[51s] [Staff] Reservation 15 approved
+[52s] [Monitor] submitted 15, processed 15, approved 10, rejected 5, queue size 0
+[52s] All 15 reservations processed, program finished
