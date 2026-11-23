@@ -1,0 +1,229 @@
+##### 1. Successful authentication, event list and registration (S1001, event 101)
+Enter your student ID: S1001
+OK Welcome S1001
+
+Available events:
+ID    Name                      Registered
+101   AI Workshop               0/5
+102   Cybersecurity Seminar     0/4
+103   Research Conference       0/6
+
+Enter the event ID to register for (0 to exit): 101
+OK Registered for AI Workshop (1/5 places taken)
+
+Available events:
+ID    Name                      Registered
+101   AI Workshop               1/5
+102   Cybersecurity Seminar     0/4
+103   Research Conference       0/6
+
+Enter the event ID to register for (0 to exit): 0
+OK Goodbye
+Registration session closed. Goodbye, S1001.
+
+##### 2. Unsuccessful authentication (S9999 is not a registered student)
+Enter your student ID: S9999
+ERROR Unknown student ID
+Authentication failed.
+
+##### 3. Same student registers for the same event twice (S1002, event 101)
+Enter your student ID: S1002
+OK Welcome S1002
+
+Available events:
+ID    Name                      Registered
+101   AI Workshop               1/5
+102   Cybersecurity Seminar     0/4
+103   Research Conference       0/6
+
+Enter the event ID to register for (0 to exit): 101
+OK Registered for AI Workshop (2/5 places taken)
+
+Available events:
+ID    Name                      Registered
+101   AI Workshop               2/5
+102   Cybersecurity Seminar     0/4
+103   Research Conference       0/6
+
+Enter the event ID to register for (0 to exit): 101
+ERROR You are already registered for this event
+
+Available events:
+ID    Name                      Registered
+101   AI Workshop               2/5
+102   Cybersecurity Seminar     0/4
+103   Research Conference       0/6
+
+Enter the event ID to register for (0 to exit): 0
+OK Goodbye
+Registration session closed. Goodbye, S1002.
+
+##### 4. Event that does not exist (S1003, event 999)
+Enter your student ID: S1003
+OK Welcome S1003
+
+Available events:
+ID    Name                      Registered
+101   AI Workshop               2/5
+102   Cybersecurity Seminar     0/4
+103   Research Conference       0/6
+
+Enter the event ID to register for (0 to exit): 999
+ERROR No such event
+
+Available events:
+ID    Name                      Registered
+101   AI Workshop               2/5
+102   Cybersecurity Seminar     0/4
+103   Research Conference       0/6
+
+Enter the event ID to register for (0 to exit): 0
+OK Goodbye
+Registration session closed. Goodbye, S1003.
+
+##### 5. Raw connection that never logs in tries to see events and register
+ERROR Please log in first
+ERROR Please log in first
+
+##### 6. Eight clients connected at the same time, all ask for event 102 (capacity 4) together
+(each client logs in, waits 3 seconds and then sends its request, so the requests arrive at the same moment)
+--- client S1001 (server replies only) ---
+OK Welcome S1001
+OK Registered for Cybersecurity Seminar (1/4 places taken)
+OK Goodbye
+--- client S1002 (server replies only) ---
+OK Welcome S1002
+OK Registered for Cybersecurity Seminar (2/4 places taken)
+OK Goodbye
+--- client S1003 (server replies only) ---
+OK Welcome S1003
+OK Registered for Cybersecurity Seminar (3/4 places taken)
+OK Goodbye
+--- client S1004 (server replies only) ---
+OK Welcome S1004
+OK Registered for Cybersecurity Seminar (4/4 places taken)
+OK Goodbye
+--- client S1005 (server replies only) ---
+OK Welcome S1005
+ERROR Event is full
+OK Goodbye
+--- client S1006 (server replies only) ---
+OK Welcome S1006
+ERROR Event is full
+OK Goodbye
+--- client S1007 (server replies only) ---
+OK Welcome S1007
+ERROR Event is full
+OK Goodbye
+--- client S1008 (server replies only) ---
+OK Welcome S1008
+ERROR Event is full
+OK Goodbye
+
+##### 7. Event 102 is full now, another student tries it (S1009)
+Enter your student ID: S1009
+OK Welcome S1009
+
+Available events:
+ID    Name                      Registered
+101   AI Workshop               2/5
+102   Cybersecurity Seminar     4/4 (full)
+103   Research Conference       0/6
+
+Enter the event ID to register for (0 to exit): 102
+ERROR Event is full
+
+Available events:
+ID    Name                      Registered
+101   AI Workshop               2/5
+102   Cybersecurity Seminar     4/4 (full)
+103   Research Conference       0/6
+
+Enter the event ID to register for (0 to exit): 0
+OK Goodbye
+Registration session closed. Goodbye, S1009.
+
+##### 8. A client is killed in the middle of a session (S1010)
+client process 1272 killed with kill -9, the server log below shows how it was handled
+
+##### 9. Server shutdown with ctrl+c (SIGINT), then the whole server log
+
+[Server] Listening on port 8080
+[Server] Connected clients (1): -
+[Server] S1001 logged in
+[Server] S1001 asked for event 101: OK Registered for AI Workshop (1/5 places taken)
+[Server] S1001 logged out
+[Server] Connected clients (0):
+[Server] Connected clients (1): -
+[Server] Login refused for ID 'S9999'
+[Server] Connected clients (0):
+[Server] Connected clients (1): -
+[Server] S1002 logged in
+[Server] S1002 asked for event 101: OK Registered for AI Workshop (2/5 places taken)
+[Server] S1002 asked for event 101: ERROR You are already registered for this event
+[Server] S1002 logged out
+[Server] Connected clients (0):
+[Server] Connected clients (1): -
+[Server] S1003 logged in
+[Server] S1003 asked for event 999: ERROR No such event
+[Server] S1003 logged out
+[Server] Connected clients (0):
+[Server] Connected clients (1): -
+[Server] Refused 'LIST' from a client that is not logged in
+[Server] Refused 'REGISTER' from a client that is not logged in
+[Server] Connected clients (0):
+[Server] Connected clients (1): -
+[Server] Connected clients (2): - -
+[Server] Connected clients (3): - - -
+[Server] Connected clients (4): - - - -
+[Server] S1001 logged in
+[Server] Connected clients (5): S1003 - - S1001 -
+[Server] S1003 logged in
+[Server] Connected clients (6): S1003 - - S1001 - -
+[Server] S1008 logged in
+[Server] S1002 logged in
+[Server] Connected clients (7): S1003 S1002 - S1001 - S1008 -
+[Server] S1005 logged in
+[Server] S1007 logged in
+[Server] Connected clients (8): S1003 S1002 S1005 S1001 - S1008 S1007 -
+[Server] S1006 logged in
+[Server] S1004 logged in
+[Server] S1001 asked for event 102: OK Registered for Cybersecurity Seminar (1/4 places taken)
+[Server] S1002 asked for event 102: OK Registered for Cybersecurity Seminar (2/4 places taken)
+[Server] S1003 asked for event 102: OK Registered for Cybersecurity Seminar (3/4 places taken)
+[Server] S1004 asked for event 102: OK Registered for Cybersecurity Seminar (4/4 places taken)
+[Server] S1005 asked for event 102: ERROR Event is full
+[Server] S1007 asked for event 102: ERROR Event is full
+[Server] S1008 asked for event 102: ERROR Event is full
+[Server] S1006 asked for event 102: ERROR Event is full
+[Server] S1001 logged out
+[Server] Connected clients (7): S1003 S1002 S1005 S1004 S1008 S1007 S1006
+[Server] S1002 logged out
+[Server] Connected clients (6): S1003 S1005 S1004 S1008 S1007 S1006
+[Server] S1005 logged out
+[Server] Connected clients (5): S1003 S1004 S1008 S1007 S1006
+[Server] S1008 logged out
+[Server] Connected clients (4): S1003 S1004 S1007 S1006
+[Server] S1003 logged out
+[Server] Connected clients (3): S1004 S1007 S1006
+[Server] S1007 logged out
+[Server] Connected clients (2): S1004 S1006
+[Server] S1004 logged out
+[Server] Connected clients (1): S1006
+[Server] S1006 logged out
+[Server] Connected clients (0):
+[Server] Connected clients (1): -
+[Server] S1009 logged in
+[Server] S1009 asked for event 102: ERROR Event is full
+[Server] S1009 logged out
+[Server] Connected clients (0):
+[Server] Connected clients (1): -
+[Server] S1010 logged in
+[Server] Lost connection to S1010
+[Server] Connected clients (0):
+
+[Server] Shutting down
+[Server] Final registrations:
+  101 AI Workshop 2/5: S1001 S1002
+  102 Cybersecurity Seminar 4/4: S1001 S1002 S1003 S1004
+  103 Research Conference 0/6:
