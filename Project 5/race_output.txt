@@ -1,0 +1,22 @@
+round 1: 4 registered, 4 told the event is full |   102 Cybersecurity Seminar 4/4: S1001 S1003 S1002 S1005
+round 2: 4 registered, 4 told the event is full |   102 Cybersecurity Seminar 4/4: S1001 S1002 S1003 S1004
+round 3: 4 registered, 4 told the event is full |   102 Cybersecurity Seminar 4/4: S1004 S1005 S1001 S1003
+round 4: 4 registered, 4 told the event is full |   102 Cybersecurity Seminar 4/4: S1002 S1004 S1001 S1003
+round 5: 4 registered, 4 told the event is full |   102 Cybersecurity Seminar 4/4: S1001 S1002 S1005 S1006
+round 6: 4 registered, 4 told the event is full |   102 Cybersecurity Seminar 4/4: S1001 S1002 S1003 S1005
+round 7: 4 registered, 4 told the event is full |   102 Cybersecurity Seminar 4/4: S1001 S1002 S1003 S1004
+round 8: 4 registered, 4 told the event is full |   102 Cybersecurity Seminar 4/4: S1001 S1002 S1004 S1007
+round 9: 4 registered, 4 told the event is full |   102 Cybersecurity Seminar 4/4: S1002 S1005 S1006 S1003
+round 10: 4 registered, 4 told the event is full |   102 Cybersecurity Seminar 4/4: S1001 S1003 S1004 S1002
+round 11: 4 registered, 4 told the event is full |   102 Cybersecurity Seminar 4/4: S1001 S1002 S1004 S1006
+round 12: 4 registered, 4 told the event is full |   102 Cybersecurity Seminar 4/4: S1001 S1002 S1003 S1004
+round 13: 4 registered, 4 told the event is full |   102 Cybersecurity Seminar 4/4: S1002 S1003 S1001 S1004
+round 14: 4 registered, 4 told the event is full |   102 Cybersecurity Seminar 4/4: S1001 S1002 S1005 S1006
+round 15: 4 registered, 4 told the event is full |   102 Cybersecurity Seminar 4/4: S1001 S1002 S1003 S1004
+round 16: 4 registered, 4 told the event is full |   102 Cybersecurity Seminar 4/4: S1001 S1003 S1002 S1004
+round 17: 4 registered, 4 told the event is full |   102 Cybersecurity Seminar 4/4: S1001 S1002 S1003 S1007
+round 18: 4 registered, 4 told the event is full |   102 Cybersecurity Seminar 4/4: S1001 S1002 S1003 S1004
+round 19: 4 registered, 4 told the event is full |   102 Cybersecurity Seminar 4/4: S1001 S1003 S1002 S1005
+round 20: 4 registered, 4 told the event is full |   102 Cybersecurity Seminar 4/4: S1001 S1002 S1003 S1004
+
+rounds where exactly 4 registered and 4 were refused: 20 of 20
