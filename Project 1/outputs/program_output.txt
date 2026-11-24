@@ -1,0 +1,9 @@
+Transaction 1001: deposit of 500
+Transaction 1002: withdrawal of 200
+Transaction 1003: deposit of 1200
+Transaction 1004: withdrawal of 350
+Transaction 1005: deposit of 75
+Transaction 1006: withdrawal of 125
+Total deposits: 1775
+Total withdrawals: 675
+Final balance: 1100

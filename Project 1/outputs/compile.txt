@@ -1,0 +1,28 @@
+$ gcc -Wall -O0 -fno-inline -o program program.c
+$ file program   (before strip)
+program: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=a24997d201536080b54cf226aad02024413973cb, for GNU/Linux 3.2.0, not stripped
+$ ls -l program   (before strip)
+-rwxrwxrwx 1 rowan rowan 16344 Nov 26 21:40 program
+$ nm program | head -n 12   (before strip)
+0000000000003db0 d _DYNAMIC
+0000000000003fa0 d _GLOBAL_OFFSET_TABLE_
+0000000000002000 R _IO_stdin_used
+                 w _ITM_deregisterTMCloneTable
+                 w _ITM_registerTMCloneTable
+00000000000021f8 r __FRAME_END__
+00000000000020a4 r __GNU_EH_FRAME_HDR
+0000000000004028 D __TMC_END__
+000000000000038c r __abi_tag
+0000000000004028 B __bss_start
+                 w __cxa_finalize@GLIBC_2.2.5
+0000000000004000 D __data_start
+$ strip program
+$ file program   (after strip)
+program: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=a24997d201536080b54cf226aad02024413973cb, for GNU/Linux 3.2.0, stripped
+$ ls -l program   (after strip)
+-rwxrwxrwx 1 rowan rowan 14496 Nov 26 21:40 program
+$ nm program   (after strip)
+nm: program: no symbols
+$ gcc -Wall -O0 -g -fno-inline -o program_debug program.c
+$ file program_debug
+program_debug: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=988aed1a3aa1d9f7223ae6d799e44d924d5ef43b, for GNU/Linux 3.2.0, with debug_info, not stripped
