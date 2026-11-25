@@ -44,3 +44,6 @@ strace -o outputs/strace_not_terminal.txt ./program > /dev/null
 
 # script gives the program a terminal like a normal run, so printf writes line by line
 script -qec "strace -o outputs/strace_terminal.txt ./program" /dev/null > /dev/null
+
+# the gdb commands are in gdb_commands.txt
+gdb -q -batch -x gdb_commands.txt ./program_debug > outputs/gdb_session.txt 2>&1

@@ -2,7 +2,7 @@ $ gcc -Wall -O0 -fno-inline -o program program.c
 $ file program   (before strip)
 program: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=a24997d201536080b54cf226aad02024413973cb, for GNU/Linux 3.2.0, not stripped
 $ ls -l program   (before strip)
--rwxrwxrwx 1 rowan rowan 16344 Nov 26 21:40 program
+-rwxrwxrwx 1 rowan rowan 16344 Nov 26 21:52 program
 $ nm program | head -n 12   (before strip)
 0000000000003db0 d _DYNAMIC
 0000000000003fa0 d _GLOBAL_OFFSET_TABLE_
@@ -20,7 +20,7 @@ $ strip program
 $ file program   (after strip)
 program: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=a24997d201536080b54cf226aad02024413973cb, for GNU/Linux 3.2.0, stripped
 $ ls -l program   (after strip)
--rwxrwxrwx 1 rowan rowan 14496 Nov 26 21:40 program
+-rwxrwxrwx 1 rowan rowan 14496 Nov 26 21:52 program
 $ nm program   (after strip)
 nm: program: no symbols
 $ gcc -Wall -O0 -g -fno-inline -o program_debug program.c
