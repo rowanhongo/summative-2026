@@ -1,0 +1,73 @@
+set pagination off
+set confirm off
+set debuginfod enabled off
+set disassembly-flavor intel
+
+# breakpoints at the entry point, main and one of our own functions
+break _start
+break main
+break processTransactions
+info breakpoints
+
+run
+echo \n===== stopped at _start =====\n
+bt
+info registers rip rsp
+x/3i $rip
+
+continue
+echo \n===== stopped at main (call stack, locals before they are set) =====\n
+bt
+info locals
+print &n
+print $rsp
+
+# step over int n = 6 and the malloc line
+next
+next
+echo \n===== main after malloc (list points into the heap) =====\n
+print n
+print list
+print *list
+
+continue
+echo \n===== stopped at processTransactions =====\n
+bt
+info args
+echo \n----- the transactions on the heap -----\n
+print list
+print *list@6
+print list[1]
+x/18dw list
+print sizeof(struct transaction)
+echo \n----- global variables -----\n
+print totalDeposits
+print &totalDeposits
+print amounts
+print &amounts
+info symbol &totalDeposits
+info symbol &amounts
+
+break program.c:40 if i == 4
+continue
+echo \n===== inside the loop at i == 4 =====\n
+bt
+echo \n----- a local variable on the stack -----\n
+print i
+print &i
+print $rsp
+print $rbp
+print list[i]
+print totalDeposits
+info frame
+
+echo \n===== memory map: where the stack, heap and program data are =====\n
+info proc mappings
+
+finish
+echo \n===== back in main =====\n
+bt
+print totalDeposits
+print totalWithdrawals
+
+continue
