@@ -34,7 +34,7 @@ struct event events[3] = {
 char students[10][ID_LEN] = {"S1001", "S1002", "S1003", "S1004", "S1005",
                              "S1006", "S1007", "S1008", "S1009", "S1010"};
 
-// events, clients and numClients are shared by all the client threads
+// the event list and the client list are shared by all the client threads
 // they are only used while holding lock
 struct client clients[MAX_CLIENTS];
 int numClients = 0;

@@ -3,7 +3,7 @@ set confirm off
 set debuginfod enabled off
 set disassembly-flavor intel
 
-# breakpoints at the entry point, main and one of our own functions
+# breakpoints at _start and main, plus one in processTransactions
 break _start
 break main
 break processTransactions
