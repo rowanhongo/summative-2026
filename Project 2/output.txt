@@ -1,0 +1,140 @@
+$ nasm -f elf64 sensor_analysis.asm -o sensor_analysis.o
+$ ld sensor_analysis.o -o sensor_analysis
+
+##### sensor_readings.txt: the example file in this folder
+input:
+25$
+30$
+invalid$
+18$
+42$
+-5$
+output:
+Total records: 6
+Valid measurements: 4
+Invalid measurements: 2
+Sum of valid measurements: 115
+Minimum measurement: 18
+Maximum measurement: 42
+exit code: 0
+
+##### unix_no_final_newline: same data, the last line has no line feed
+input (cat -A shows $ for a line feed and ^M for a carriage return):
+25$
+30$
+invalid$
+18$
+42$
+-5
+output:
+Total records: 6
+Valid measurements: 4
+Invalid measurements: 2
+Sum of valid measurements: 115
+Minimum measurement: 18
+Maximum measurement: 42
+exit code: 0
+
+##### windows_crlf: same data with Windows line endings
+input (cat -A shows $ for a line feed and ^M for a carriage return):
+25^M$
+30^M$
+invalid^M$
+18^M$
+42^M$
+-5^M$
+output:
+Total records: 6
+Valid measurements: 4
+Invalid measurements: 2
+Sum of valid measurements: 115
+Minimum measurement: 18
+Maximum measurement: 42
+exit code: 0
+
+##### empty_lines: empty lines count as invalid records
+input (cat -A shows $ for a line feed and ^M for a carriage return):
+10$
+$
+20$
+$
+$
+30$
+output:
+Total records: 6
+Valid measurements: 3
+Invalid measurements: 3
+Sum of valid measurements: 60
+Minimum measurement: 10
+Maximum measurement: 30
+exit code: 0
+
+##### mixed_endings: CRLF, an empty CRLF line and LF together
+input (cat -A shows $ for a line feed and ^M for a carriage return):
+5^M$
+^M$
+7$
+output:
+Total records: 3
+Valid measurements: 2
+Invalid measurements: 1
+Sum of valid measurements: 12
+Minimum measurement: 5
+Maximum measurement: 7
+exit code: 0
+
+##### range_limits: limits of the range and bad formats
+input (cat -A shows $ for a line feed and ^M for a carriage return):
+0$
+100$
+101$
+-1$
+007$
+99999999999999999999$
+12abc$
+3.5$
+ 5$
+output:
+Total records: 9
+Valid measurements: 3
+Invalid measurements: 6
+Sum of valid measurements: 107
+Minimum measurement: 0
+Maximum measurement: 100
+exit code: 0
+
+##### no_valid: no valid measurement at all
+input (cat -A shows $ for a line feed and ^M for a carriage return):
+abc$
+-3$
+200$
+output:
+Total records: 3
+Valid measurements: 0
+Invalid measurements: 3
+Sum of valid measurements: 0
+Minimum measurement: N/A
+Maximum measurement: N/A
+exit code: 0
+
+##### empty_file: file with nothing in it
+input (cat -A shows $ for a line feed and ^M for a carriage return):
+(empty file)
+output:
+Total records: 0
+Valid measurements: 0
+Invalid measurements: 0
+Sum of valid measurements: 0
+Minimum measurement: N/A
+Maximum measurement: N/A
+exit code: 0
+
+##### missing_file: sensor_readings.txt does not exist
+output:
+Error: could not open sensor_readings.txt
+exit code: 1
+
+##### read_error: sensor_readings.txt is a folder, open works but read fails
+output:
+Error: could not read sensor_readings.txt
+exit code: 1
