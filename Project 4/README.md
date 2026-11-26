@@ -72,7 +72,7 @@ The queue gets full and the student thread waits:
 The end of the run:
 
 ```
-[51s] [Staff] Reservation 15 approved
+[48s] [Staff] Reservation 15 approved
 [52s] [Monitor] submitted 15, processed 15, approved 10, rejected 5, queue size 0
 [52s] All 15 reservations processed, program finished
 ```
@@ -80,4 +80,6 @@ The end of the run:
 ## Notes
 
 - The book ids come from rand() and the program does not seed it, so every run gives the same book ids. The order of lines that happen in the same second can change.
+- The time stamps are whole seconds from a monotonic clock. Two events a few milliseconds apart can show different seconds if a second ends between them.
+- The staff thread finishes at about 48 seconds. The program ends at 52 seconds because the monitor only wakes every 4 seconds, and its last report comes then.
 - The queue size never goes above 5, and approved plus rejected is always equal to processed.
