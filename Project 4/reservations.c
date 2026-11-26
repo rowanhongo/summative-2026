@@ -28,11 +28,15 @@ pthread_mutex_t lock;
 pthread_cond_t notFull;
 pthread_cond_t notEmpty;
 
-time_t startTime;
+long startTime;
 
+// monotonic clock, the normal clock can jump and the times would be wrong
 int elapsed()
 {
-    return time(NULL) - startTime;
+    struct timespec t;
+
+    clock_gettime(CLOCK_MONOTONIC, &t);
+    return t.tv_sec - startTime;
 }
 
 void *producer(void *arg)
@@ -147,9 +151,11 @@ void *monitor(void *arg)
 int main()
 {
     pthread_t student, staff, watcher;
+    struct timespec t;
 
     setbuf(stdout, NULL);
-    startTime = time(NULL);
+    clock_gettime(CLOCK_MONOTONIC, &t);
+    startTime = t.tv_sec;
 
     pthread_mutex_init(&lock, NULL);
     pthread_cond_init(&notFull, NULL);
