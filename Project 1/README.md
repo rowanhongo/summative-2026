@@ -74,6 +74,7 @@ bash analysis.sh runs all of these and saves the output in outputs/.
 | objdump -d -M intel program | objdump_disassembly.txt |
 | objdump -s -j .rodata -j .data program | objdump_data.txt |
 | objdump -R program | objdump_dynamic_relocs.txt |
+| nm -n program_debug | nm_debug_symbols.txt |
 | strace ./program with the output sent to /dev/null | strace_not_terminal.txt |
 | strace ./program in a terminal (run with script) | strace_terminal.txt |
 | gdb -q -batch -x gdb_commands.txt ./program_debug | gdb_session.txt |

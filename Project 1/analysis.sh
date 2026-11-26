@@ -39,6 +39,9 @@ objdump -d -M intel program > outputs/objdump_disassembly.txt
 objdump -s -j .rodata -j .data program > outputs/objdump_data.txt
 objdump -R program > outputs/objdump_dynamic_relocs.txt
 
+# the debug build has the same code addresses, nm gives the function names
+nm -n program_debug > outputs/nm_debug_symbols.txt
+
 # output sent to /dev/null is not a terminal, so printf buffers everything into one write
 strace -o outputs/strace_not_terminal.txt ./program > /dev/null
 
